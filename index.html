@@ -1,0 +1,1714 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cúspides – Conquistá el Amanecer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Special+Gothic+Condensed+One&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold:  #c97d2e;
+      --navy:  #1e3a52;
+      --cream: #DBD8D0;
+      --white: #ffffff;
+      --font-display: 'Special Gothic Condensed One', sans-serif;
+      --font-body:    'Inter', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+   body {
+  font-family: var(--font-body);
+  color: var(--white);
+  background: linear-gradient(180deg,
+    #03090A  0%,
+    #214A66 22%,
+    #5E7E8C 44%,
+    #808080 62%,
+    #BF803D 82%,
+    #DBD8D0 100%
+  );
+  min-height: 100vh;
+  overflow-x: hidden;
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28"><path d="M6 2 L6 22 L11 17.5 L14.5 25 L17.5 23.5 L14 16 L21 16 Z" fill="white" stroke="%23c97d2e" stroke-width="1.8" stroke-linejoin="round"/></svg>') 6 2, auto;
+}
+
+    /* ── NAVBAR ───────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 3rem;
+      background: rgba(3,9,10,0.55);
+      backdrop-filter: blur(10px);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+    }
+
+    .logo img {
+      height: 48px;
+      width: auto;
+    }
+
+    /* Fallback SVG logo if no image */
+    .logo-svg { width: 44px; height: 44px; }
+
+    .logo-text {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      color: var(--white);
+      text-transform: uppercase;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2.2rem;
+    }
+
+    nav ul a {
+      color: var(--white);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      opacity: 0.85;
+      transition: opacity 0.2s;
+    }
+
+    nav ul a:hover { opacity: 1; }
+
+    /* ── HERO ─────────────────────────────────────────── */
+    #inicio {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 2rem;
+  overflow: hidden;
+  background-image: url(heroo.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+    #stars-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+    }
+
+    .hero-content { position: relative; z-index: 2; }
+
+    @keyframes amanecer {
+  0% {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    text-shadow: 0 0 18px rgba(201,125,46,0.25);
+  }
+}
+
+.hero-content h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 8vw, 6.5rem);
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: 0.01em;
+  color: var(--cream);
+  text-transform: uppercase;
+  margin-bottom: 1.8rem;
+  opacity: 0;
+  animation: amanecer 2.2s ease-out 0.3s forwards;
+}
+
+    .hero-content p {
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  color: var(--white);
+  max-width: 540px;
+  margin: 0 auto 2.4rem;
+  line-height: 1.65;
+  opacity: 0;
+  animation: amanecer 1.8s ease-out 1s forwards;
+}
+
+    .btn {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--white);
+  padding: 0.85rem 2.6rem;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  border: none;
+  cursor: pointer;
+  transition: background 0.25s, transform 0.2s, box-shadow 0.3s;
+}
+
+.btn:hover {
+  background: #a9641c;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 24px rgba(201,125,46,0.65), 0 0 12px rgba(201,125,46,0.4);
+}
+
+    .btn-navy {
+      background: var(--navy);
+    }
+    .btn-navy:hover { background: #152a3d; }
+
+    /* ── NUESTRA MISIÓN ───────────────────────────────── */
+    #nosotros {
+      padding: 8rem 3rem;
+      position: relative;
+    }
+#nosotros {
+  padding: 8rem 3rem;
+  position: relative;
+  overflow: hidden;
+}
+
+#stars-mision {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.mision-inner {
+  position: relative;
+  z-index: 1;
+}
+    .mision-inner {
+      max-width: 1150px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .mision-text h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--cream);
+      margin-bottom: 1.8rem;
+      line-height: 1;
+    }
+
+    .mision-text p {
+      color: rgba(255,255,255,0.85);
+      line-height: 1.8;
+      font-size: 0.97rem;
+      margin-bottom: 1rem;
+    }
+
+    .mision-text .btn { margin-top: 1.5rem; }
+
+    .mision-img {
+  border-radius: 16px;
+  overflow: hidden;
+  aspect-ratio: 4/3;
+  background: rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mision-img img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.mision-img:hover img {
+  transform: scale(1.08);
+}
+
+.img-ph {
+  color: rgba(255,255,255,0.18);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-align: center;
+  padding: 2rem;
+}
+
+    /* ── EXPEDICIONES ─────────────────────────────────── */
+    #expediciones {
+  padding: 7rem 3rem;
+  position: relative;
+  overflow: hidden;
+}
+
+#stars-expediciones {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+#expediciones h2,
+#expediciones .exp-grid {
+  position: relative;
+  z-index: 1;
+}
+
+    #expediciones h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      text-align: center;
+      color: var(--white);
+      margin-bottom: 3.5rem;
+    }
+
+    .exp-grid {
+      max-width: 1150px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, 260px);
+      gap: 12px;
+    }
+
+    .exp-card {
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      background: rgba(0,0,0,0.4);
+    }
+
+    .exp-card img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .exp-card:hover img { transform: scale(1.06); }
+
+    .exp-card .overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(13,31,53,0.65);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      text-align: center;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .exp-card:hover .overlay { opacity: 1; }
+
+    .exp-card .overlay h3 {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--white);
+      margin-bottom: 0.4rem;
+    }
+
+    .exp-card .overlay p {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.8);
+    }
+
+    /* placeholder cards */
+    .exp-ph {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.12);
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+    }
+
+    /* ── NUESTRO EQUIPO ───────────────────────────────── */
+    #equipo {
+      padding: 7rem 3rem;
+    }
+
+    #equipo h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      text-align: center;
+      color: var(--white);
+      margin-bottom: 3.5rem;
+    }
+
+    .team-wrap {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .team-arrow {
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: 2.2rem;
+      font-weight: 700;
+      cursor: pointer;
+      opacity: 0.6;
+      padding: 0.5rem 0.8rem;
+      transition: opacity 0.2s;
+      flex-shrink: 0;
+    }
+
+    .team-arrow:hover { opacity: 1; }
+
+    .team-members {
+      display: flex;
+      gap: 2rem;
+      flex: 1;
+      justify-content: center;
+    }
+
+    .team-member {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.team-member:hover {
+  transform: translateY(-10px);
+}
+
+    .team-avatar {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      overflow: hidden;
+      background: rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.2);
+      font-size: 0.75rem;
+    }
+
+    .team-avatar img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+
+    .team-member .name {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--white);
+    }
+
+    .team-member .btn {
+      padding: 0.6rem 1.8rem;
+      font-size: 0.88rem;
+    }
+
+    .team-dots {
+      display: flex;
+      justify-content: center;
+      gap: 0.6rem;
+      margin-top: 2.5rem;
+    }
+
+    .dot {
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.5);
+      background: transparent;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .dot.active { background: rgba(255,255,255,0.7); }
+
+    /* ── PREPARACIÓN ──────────────────────────────────── */
+    #cursos {
+      padding: 7rem 3rem;
+    }
+
+    #cursos h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      text-align: center;
+      color: var(--white);
+      margin-bottom: 3.5rem;
+    }
+
+    .prep-grid {
+      max-width: 1150px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+   .prep-card {
+  border-radius: 14px;
+  overflow: hidden;
+  background: rgba(0,0,0,0.15);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.prep-card:hover {
+  transform: scale(1.04);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+  z-index: 5;
+  position: relative;
+}
+
+    .prep-card .img-wrap {
+      height: 240px;
+      overflow: hidden;
+      background: rgba(0,0,0,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .prep-card .img-wrap img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s;
+    }
+
+    .prep-card:hover .img-wrap img { transform: scale(1.05); }
+
+    .prep-card .card-body {
+      background: var(--cream);
+      padding: 1.5rem;
+    }
+
+    .prep-card .card-body h3 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--gold);
+      margin-bottom: 0.6rem;
+    }
+
+    .prep-card .card-body p {
+  font-size: 0.9rem;
+  color: #333;
+  line-height: 1.65;
+  max-height: 100px;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+.prep-card:hover .card-body p {
+  max-height: 300px;
+}
+
+    /* ── ESCUELA DE GUÍAS ─────────────────────────────── */
+    #guias {
+      padding: 7rem 3rem;
+    }
+
+    #guias h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      text-align: center;
+      color: var(--white);
+      margin-bottom: 3.5rem;
+    }
+
+    .guias-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .guia-card {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 12px;
+      padding: 2rem 1.8rem;
+      transition: background 0.25s;
+    }
+
+    .guia-card:hover { background: rgba(255,255,255,0.12); }
+
+    .guia-card .num {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 0.8rem;
+    }
+
+    .guia-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--white);
+      margin-bottom: 0.8rem;
+    }
+
+    .guia-card p {
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.7;
+    }
+
+    /* ── TESTIMONIOS ──────────────────────────────────── */
+    #testimonios {
+      padding: 7rem 3rem;
+    }
+
+    #testimonios h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      text-align: center;
+      color: var(--white);
+      margin-bottom: 3.5rem;
+    }
+
+    .test-grid {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .test-card {
+  background: rgba(255,255,255,0.1);
+  border-radius: 10px;
+  padding: 2rem;
+  border: 2px solid transparent;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.test-card:hover {
+  border-color: var(--gold);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.35);
+}
+
+    .test-card p {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.88);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+   .stars {
+  color: #ffffff;   /* beige/cream, como el título */
+  font-size: 1.1rem;
+  margin-bottom: 0.6rem;
+  letter-spacing: 0.1em;
+}
+
+    .test-card .autor {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.06em;
+      color: var(--white);
+    }
+
+    /* ── CONTACTO ─────────────────────────────────────── */
+    #contacto {
+      padding: 7rem 3rem 5rem;
+      text-align: center;
+    }
+
+    #contacto h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--white);
+      margin-bottom: 0.6rem;
+    }
+
+    #contacto > p {
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 2.5rem;
+      font-size: 1rem;
+    }
+
+    .contact-form {
+      max-width: 660px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      background: rgba(255,255,255,0.15);
+      border: none;
+      color: var(--white);
+      padding: 1rem 1.4rem;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      font-family: var(--font-body);
+      outline: none;
+      transition: background 0.2s;
+    }
+
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder { color: rgba(255,255,255,0.45); }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus { background: rgba(255,255,255,0.22); }
+
+    .contact-form textarea { resize: vertical; min-height: 150px; }
+
+    .contact-form .btn-navy { align-self: center; padding: 0.9rem 3rem; margin-top: 0.5rem; }
+
+    /* ── FOOTER ───────────────────────────────────────── */
+    footer {
+      padding: 2rem 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+    }
+
+    .footer-logo img { height: 38px; }
+
+    .footer-logo-text {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      color: rgba(255,255,255,0.5);
+      text-transform: uppercase;
+    }
+
+    footer p {
+      color: rgba(0, 0, 0, 0.4);
+      font-size: 0.82rem;
+      letter-spacing: 0.05em;
+    }
+    .team-gallery {
+  max-width: 1150px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+  padding: 0 3rem;
+}
+
+.team-photo {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  aspect-ratio: 3/4;
+  background: rgba(0,0,0,0.4);
+  cursor: pointer;
+}
+
+.team-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.team-photo:hover img {
+  transform: scale(1.06);
+}
+
+.team-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(13,20,26,0) 40%, rgba(13,20,26,0.92) 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  gap: 1rem;
+}
+
+.team-name {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+    /* ── MENÚ HAMBURGUESA (oculto en escritorio) ──────── */
+    #menu-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      z-index: 200;
+    }
+
+    #menu-toggle span {
+      width: 26px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    #menu-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    #menu-toggle.open span:nth-child(2) { opacity: 0; }
+    #menu-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ════════════════════════════════════════════════════
+       RESPONSIVE — pantallas chicas (celular / tablet)
+       ════════════════════════════════════════════════════ */
+    @media (max-width: 900px) {
+
+      /* Nav */
+      nav { padding: 1rem 1.3rem; }
+
+      #menu-toggle { display: flex; }
+
+      #nav-menu {
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        width: 70%;
+        max-width: 300px;
+        background: rgba(3,9,10,0.97);
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 2rem;
+        padding: 2rem;
+        transform: translateX(100%);
+        transition: transform 0.35s ease;
+      }
+
+      #nav-menu.open { transform: translateX(0); }
+
+      #nav-menu a { font-size: 1.1rem; }
+
+      /* Hero */
+      #inicio { padding: 0 1.3rem; }
+      .hero-content p { padding: 0 0.5rem; }
+
+      /* Nuestra Misión */
+      #nosotros { padding: 5rem 1.3rem; }
+
+      .mision-inner {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      .mision-img { order: -1; }
+
+      /* Expediciones */
+      #expediciones { padding: 5rem 1.3rem; }
+
+      .exp-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(3, 180px);
+        gap: 8px;
+      }
+
+      .exp-card .overlay { opacity: 1; background: rgba(13,31,53,0.45); }
+      .exp-card .overlay h3 { font-size: 1.1rem; }
+      .exp-card .overlay p { font-size: 0.78rem; }
+
+      /* Nuestro Equipo */
+      #equipo { padding: 5rem 1.3rem; }
+
+      .team-gallery {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 0;
+      }
+
+      .team-photo { aspect-ratio: 4/3; }
+
+      /* Preparación */
+      #cursos { padding: 5rem 1.3rem; }
+
+      .prep-grid { grid-template-columns: 1fr; }
+
+      /* Escuela de Guías */
+      #guias { padding: 5rem 1.3rem; }
+
+      .guias-grid { grid-template-columns: 1fr; }
+
+      /* Testimonios */
+      #testimonios { padding: 5rem 1.3rem; }
+
+      .test-grid { grid-template-columns: 1fr; }
+
+      /* Contacto */
+      #contacto { padding: 5rem 1.3rem 3rem; }
+
+      /* Footer */
+      footer {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+        padding: 2rem 1.3rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .logo-text { font-size: 0.95rem; }
+      .logo img { height: 38px; }
+
+      .exp-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(6, 220px);
+      }
+    }
+    .reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.section-badge {
+  position: absolute;
+  top: 2.5rem;
+  left: 3rem;
+  font-family: font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  color: color: #ffffff; ;
+  opacity: 0.8;
+  z-index: 10;
+}
+/* ── TIMELINE ─────────────────────────────────────── */
+.timeline {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+/* Línea vertical central */
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--gold);
+  opacity: 0.4;
+  transform: translateX(-50%);
+}
+
+.timeline-item {
+  display: flex;
+  justify-content: flex-end;
+  padding: 1rem 0;
+  width: 50%;
+  position: relative;
+}
+
+.timeline-item.right {
+  justify-content: flex-start;
+  align-self: flex-end;
+  margin-left: 50%;
+}
+
+.timeline-content {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
+  padding: 2rem;
+  width: 85%;
+  position: relative;
+  transition: background 0.3s ease;
+}
+
+.timeline-content:hover {
+  background: rgba(255,255,255,0.12);
+}
+
+/* Punto dorado en la línea */
+.timeline-content::before {
+  content: '';
+  position: absolute;
+  top: 2rem;
+  width: 14px;
+  height: 14px;
+  background: var(--gold);
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.3);
+}
+
+.timeline-item.left .timeline-content::before {
+  right: -8%;
+  transform: translateX(50%);
+}
+
+.timeline-item.right .timeline-content::before {
+  left: -8%;
+  transform: translateX(-50%);
+}
+
+.timeline-content .num {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: var(--white);
+  line-height: 1;
+  margin-bottom: 0.6rem;
+}
+
+.timeline-content h3 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--white);
+  margin-bottom: 0.8rem;
+}
+
+.timeline-content p {
+  font-size: 0.92rem;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.7;
+}
+/* ── GUÍAS FEATURED ───────────────────────────────── */
+.guias-featured {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.6fr 1fr;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.guia-card-new {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
+  padding: 2rem 1.8rem;
+  transition: background 0.3s ease, transform 0.3s ease;
+  height: 100%;
+}
+
+.guia-card-new:hover {
+  background: rgba(255,255,255,0.12);
+  transform: translateY(-5px);
+}
+
+.guia-card-new.featured {
+  background: rgba(201,125,46,0.12);
+  border-color: rgba(201,125,46,0.4);
+  padding: 3rem 2.2rem;
+  box-shadow: 0 0 30px rgba(201,125,46,0.15);
+}
+
+.guia-card-new.featured:hover {
+  background: rgba(201,125,46,0.18);
+}
+
+.guia-card-new .num {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 900;
+  color: var(--white);
+  line-height: 1;
+  margin-bottom: 0.8rem;
+}
+
+.guia-card-new.featured .num {
+  font-size: 4rem;
+  color: var(--gold);
+}
+
+.guia-card-new h3 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--white);
+  margin-bottom: 0.8rem;
+}
+
+.guia-card-new.featured h3 {
+  font-size: 1.6rem;
+}
+
+.guia-card-new p {
+  font-size: 0.92rem;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.7;
+}
+/* ── GUÍAS CON FOTOS ──────────────────────────────── */
+.guias-fotos {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.guia-foto-card {
+  border-radius: 14px;
+  overflow: hidden;
+  background: rgba(0,0,0,0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.guia-foto-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+.guia-img-wrap {
+  height: 240px;
+  overflow: hidden;
+}
+
+.guia-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.guia-foto-card:hover .guia-img-wrap img {
+  transform: scale(1.06);
+}
+
+.guia-body {
+  background: var(--cream);
+  padding: 1.5rem;
+}
+
+.guia-body .num {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.guia-body h3 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #1a1a1a;
+  margin-bottom: 0.6rem;
+}
+
+.guia-body p {
+  font-size: 0.9rem;
+  color: #444;
+  line-height: 1.65;
+}
+/* ── STATS ────────────────────────────────────────── */
+.stats-grid {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+.stat-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 14px;
+  background: rgba(255,255,255,0.05);
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.stat-card:hover {
+  background: rgba(255,255,255,0.1);
+  transform: translateY(-6px);
+}
+
+.stat-num {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 900;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 0.8rem;
+}
+
+.stat-label {
+  font-size: 0.92rem;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+/* ── ACORDEÓN ─────────────────────────────────────── */
+.acordeon {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.acordeon-item {
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.05);
+}
+
+.acordeon-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.5rem 2rem;
+  background: none;
+  border: none;
+  color: var(--white);
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.25s;
+}
+
+.acordeon-btn:hover {
+  background: rgba(255,255,255,0.07);
+}
+
+.acordeon-item.open .acordeon-btn {
+  background: rgba(201,125,46,0.1);
+}
+
+.acordeon-num {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: var(--gold);
+  min-width: 2.5rem;
+  line-height: 1;
+}
+
+.acordeon-title {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  flex: 1;
+}
+
+.acordeon-icon {
+  font-size: 1.8rem;
+  font-weight: 300;
+  color: var(--gold);
+  transition: transform 0.3s ease;
+  line-height: 1;
+}
+
+.acordeon-item.open .acordeon-icon {
+  transform: rotate(45deg);
+}
+
+.acordeon-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+  padding: 0 2rem;
+}
+
+.acordeon-item.open .acordeon-body {
+  max-height: 200px;
+  padding: 1rem 2rem 1.8rem;
+}
+
+.acordeon-body p {
+  color: rgba(255,255,255,0.75);
+  font-size: 0.97rem;
+  line-height: 1.8;
+}
+/* ── CONTACTO CON FOTO ────────────────────────────── */
+.contacto-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.contacto-img {
+  border-radius: 16px;
+  overflow: hidden;
+  aspect-ratio: 3/4;
+}
+
+.contacto-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.contacto-img:hover img {
+  transform: scale(1.05);
+}
+
+.contacto-form-wrap h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--white);
+  margin-bottom: 0.6rem;
+  text-align: left; 
+}
+
+.contacto-form-wrap p {
+  color: rgba(255,255,255,0.75);
+  margin-bottom: 2rem;
+  font-size: 1rem;
+  text-align: left; 
+}
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="logo" href="#inicio">
+  <img src="logo.png" alt="Cúspides" />
+  <span class="logo-text"></span>
+</a>
+    <ul id="nav-menu">
+      <li><a href="#nosotros">Nosotros</a></li>
+      <li><a href="#expediciones">Expediciones</a></li>
+      <li><a href="#cursos">Cursos</a></li>
+      <li><a href="#testimonios">Testimonios</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <button id="menu-toggle" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <section id="inicio">
+    <canvas id="stars-canvas"></canvas>
+    <div class="hero-content">
+      <h1>Conquistá<br>el Amanecer</h1>
+      <p>La oscuridad marca el inicio del camino. El amanecer será la recompensa para quienes estén preparados para alcanzarlo.</p>
+      <a class="btn" href="#nosotros">Reservar mi lugar</a>
+    </div>
+  </section>
+
+  <!-- NUESTRA MISIÓN -->
+  <section id="nosotros" class="reveal">
+  <span class="section-badge">00:00</span>
+    <canvas id="stars-mision"></canvas>
+    <div class="mision-inner">
+      <div class="mision-text">
+        <h2>No formamos turistas, formamos montañistas</h2>
+        <p>En Cúspides creemos que cada cumbre se gana mucho antes de alcanzarla. Acompañamos a personas que buscan prepararse física y mentalmente para vivir la montaña con respeto y compromiso.</p>
+        <a class="btn" href="#expediciones">Ver más</a>
+      </div>
+     <div class="mision-img">
+  <img src="mochila.jfif" alt="Nuestra Misión" />
+</div>
+    </div>
+  </section>
+
+    <!-- PREPARACIÓN -->
+  <section id="cursos" class="reveal">
+    <span class="section-badge">01:00</span>
+    <h2>Preparación</h2>
+    <div class="acordeon">
+
+      <div class="acordeon-item">
+        <button class="acordeon-btn">
+          <span class="acordeon-num">01</span>
+          <span class="acordeon-title">Equipamiento</span>
+          <span class="acordeon-icon">+</span>
+        </button>
+        <div class="acordeon-body">
+          <p>Todo lo que necesitás saber antes de salir a la montaña. Selección, uso y mantenimiento del equipo técnico necesario para cada tipo de expedición.</p>
+        </div>
+      </div>
+
+      <div class="acordeon-item">
+        <button class="acordeon-btn">
+          <span class="acordeon-num">02</span>
+          <span class="acordeon-title">Entrenamiento</span>
+          <span class="acordeon-icon">+</span>
+        </button>
+        <div class="acordeon-body">
+          <p>Plan de acondicionamiento físico diseñado específicamente para alpinismo y trekking de alta montaña. Resistencia, fuerza y aclimatación progresiva.</p>
+        </div>
+      </div>
+
+      <div class="acordeon-item">
+        <button class="acordeon-btn">
+          <span class="acordeon-num">03</span>
+          <span class="acordeon-title">Seguridad</span>
+          <span class="acordeon-icon">+</span>
+        </button>
+        <div class="acordeon-body">
+          <p>Protocolos de seguridad, rescate y primeros auxilios en altura para cada tipo de expedición. Comunicación satelital y planes de evacuación en cada ruta.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EXPEDICIONES -->
+  <section id="expediciones" class="reveal">
+  <span class="section-badge">02:30</span>
+    <canvas id="stars-expediciones"></canvas>
+    <h2>La montaña es nuestra aula</h2>
+    <div class="exp-grid">
+     <div class="exp-card">
+  <img src="exp1.png" alt="Aconcagua" style="object-position: top;" />
+  <div class="overlay"><h3>Técnicas de progresión en nieve y hielo</h3></div>
+</div>
+      <div class="exp-card">
+        <img src="exp2.png" alt="Travesía Nocturna" />
+        <div class="overlay"><h3>Uso de cuerdas y sistemas de aseguramiento</h3></div>
+      </div>
+      <div class="exp-card">
+        <img src="exp3.jpg" alt="Alta Montaña" />
+        <div class="overlay"><h3>Orientación en montaña</h3></div>
+      </div>
+      <div class="exp-card">
+        <img src="exp4.jpg" alt="Escalada" />
+        <div class="overlay"><h3>Gestión del riesgo</h3></div>
+      </div>
+      <div class="exp-card">
+        <img src="exp5.jpg" alt="Patagonia" />
+        <div class="overlay"><h3>Primeros auxilios en zonas agrestes</h3></div>
+      </div>
+      <div class="exp-card">
+       <img src="exp6.jpg" alt="Expedición Luna Llena" />
+        <div class="overlay"><h3>Trabajo en equipo durante expediciones</h3></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NUESTRO EQUIPO -->
+<section id="equipo" class="reveal">
+  <span class="section-badge">03:00</span>
+  <h2>¿Por qué entrenar con Cúspides?</h2>
+  <div class="stats-grid">
+
+    <div class="stat-card">
+      <span class="stat-num">+300</span>
+      <span class="stat-label">Montañistas formados</span>
+    </div>
+
+    <div class="stat-card">
+      <span class="stat-num">15</span>
+      <span class="stat-label">Años guiando expediciones</span>
+    </div>
+
+    <div class="stat-card">
+      <span class="stat-num">100%</span>
+      <span class="stat-label">Guías certificados</span>
+    </div>
+
+    <div class="stat-card">
+      <span class="stat-num">∞</span>
+      <span class="stat-label">Kilómetros recorridos</span>
+    </div>
+
+  </div>
+</section>
+
+
+
+  <!-- ESCUELA DE GUÍAS -->
+  <section id="guias" class="reveal">
+    <span class="section-badge">04:00</span>
+    <h2>Escuela Cúspides</h2>
+    <div class="guias-fotos">
+
+      <div class="guia-foto-card">
+        <div class="guia-img-wrap">
+          <img src="rescate.jpg" alt="Rescate en grietas" />
+        </div>
+        <div class="guia-body">
+          <div class="num">01</div>
+          <h3>Rescate en grietas</h3>
+          <p>Dominá protocolos de rescate en glaciares mediante prácticas reales de aseguramiento, anclajes y sistemas de extracción.</p>
+        </div>
+      </div>
+
+      <div class="guia-foto-card">
+        <div class="guia-img-wrap">
+          <img src="primeros.jpg" alt="Primeros auxilios" />
+        </div>
+        <div class="guia-body">
+          <div class="num">02</div>
+          <h3>Primeros auxilios</h3>
+          <p>Adquirí las herramientas necesarias para evaluar, asistir y estabilizar a personas en entornos de montaña y zonas de difícil acceso.</p>
+        </div>
+      </div>
+
+      <div class="guia-foto-card">
+        <div class="guia-img-wrap">
+          <img src="formacion.jpg" alt="Formación de guías" />
+        </div>
+        <div class="guia-body">
+          <div class="num">03</div>
+          <h3>Formación de guías</h3>
+          <p>Formate como líder de expediciones, combinando conocimientos técnicos, gestión del riesgo y conducción de grupos en alta montaña.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- TESTIMONIOS -->
+  <section id="testimonios" class="reveal">
+  <span class="section-badge">06:30</span>
+    <h2>Testimonios</h2>
+    <div class="test-grid">
+      <div class="test-card">
+        <p>«Hacer la cumbre bajo las estrellas fue una de las experiencias más mágicas de mi vida. El silencio de la montaña de noche te desconecta por completo de la rutina.»</p>
+        <div class="stars">★★★★★</div>
+        <span class="autor">-Alejo M.</span>
+      </div>
+      <div class="test-card">
+        <p>«Como aficionado a la fotografía, este tour superó todas mis expectativas. No solo tuvimos las mejores vistas de la Vía Láctea sin contaminación lumínica.»</p>
+        <div class="stars">★★★★★</div>
+        <span class="autor">-Lucas C.</span>
+      </div>
+      <div class="test-card">
+        <p>«Al principio me daba un poco de miedo caminar de noche, pero el equipo de profesionales transmite una tranquilidad tremenda. ¡Pienso repetir!»</p>
+        <div class="stars">★★★★★</div>
+        <span class="autor">-Julián M.</span>
+      </div>
+      <div class="test-card">
+        <p>«Nos encantó. Es una forma totalmente distinta de vivir la naturaleza. El momento del fogón y las leyendas de montaña que nos contaron los guías a mitad de camino crearon un ambiente único.»</p>
+        <div class="stars">★★★★★</div>
+        <span class="autor">-Carolina R.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto" class="reveal">
+    <span class="section-badge">06:00 — Amanecer</span>
+    <div class="contacto-inner">
+
+      <div class="contacto-img">
+        <img src="amanecer.jpg" alt="Amanecer en la montaña" />
+      </div>
+
+      <div class="contacto-form-wrap">
+        <h2>El amanecer te está esperando</h2>
+        <p>¿Listo para comenzar tu ascenso? Escribinos y te orientamos.</p>
+        <div class="contact-form">
+          <input type="text" placeholder="Tu nombre" />
+          <input type="email" placeholder="Tu correo electrónico" />
+          <textarea placeholder="Tu mensaje"></textarea>
+          <button class="btn btn-navy">Enviar</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+   <a class="footer-logo" href="#inicio">
+  <img src="logo2.png" alt="Cúspides" style="height: 45px; opacity: 0.5;" />
+  <span class="footer-logo-text"></span>
+</a>
+    <p>© 2026 Cúspides. Todos los derechos reservados.</p>
+  </footer>
+
+  <script>
+    // Starfield
+    (function() {
+      const canvas = document.getElementById('stars-canvas');
+      const section = document.getElementById('inicio');
+      const stars = Array.from({length: 200}, () => ({
+        x: Math.random(), y: Math.random(),
+        r: Math.random() * 1.5 + 0.3,
+        a: Math.random() * 0.6 + 0.2
+      }));
+      function draw() {
+        canvas.width  = section.offsetWidth;
+        canvas.height = section.offsetHeight;
+        const ctx = canvas.getContext('2d');
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        stars.forEach(s => {
+          ctx.beginPath();
+          ctx.arc(s.x * canvas.width, s.y * canvas.height, s.r, 0, Math.PI*2);
+          ctx.fillStyle = `rgba(255,255,255,${s.a})`;
+          ctx.fill();
+        });
+      }
+      draw();
+      window.addEventListener('resize', draw);
+    })();
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        document.querySelector(a.getAttribute('href'))?.scrollIntoView({behavior:'smooth'});
+        // cierra el menú hamburguesa al hacer click en un link
+        navMenu.classList.remove('open');
+        menuToggle.classList.remove('open');
+      });
+    });
+
+    // Menú hamburguesa
+    const menuToggle = document.getElementById('menu-toggle');
+    const navMenu = document.getElementById('nav-menu');
+    menuToggle.addEventListener('click', () => {
+      menuToggle.classList.toggle('open');
+      navMenu.classList.toggle('open');
+    });
+    // Estrellas en Nuestra Misión
+(function() {
+  const canvas = document.getElementById('stars-mision');
+  const section = document.getElementById('nosotros');
+  const stars = Array.from({length: 100}, () => ({
+    x: Math.random(), y: Math.random(),
+    r: Math.random() * 1.3 + 0.3,
+    a: Math.random() * 0.5 + 0.2
+  }));
+  function draw() {
+    canvas.width = section.offsetWidth;
+    canvas.height = section.offsetHeight;
+    const ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    stars.forEach(s => {
+      ctx.beginPath();
+      ctx.arc(s.x * canvas.width, s.y * canvas.height, s.r, 0, Math.PI*2);
+      ctx.fillStyle = `rgba(255,255,255,${s.a})`;
+      ctx.fill();
+    });
+  }
+  draw();
+  window.addEventListener('resize', draw);
+})();
+// Scroll reveal
+(function() {
+  const elements = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  elements.forEach(el => observer.observe(el));
+})();
+// Acordeón de Preparación
+(function() {
+  const items = document.querySelectorAll('.acordeon-item');
+  items.forEach(item => {
+    item.querySelector('.acordeon-btn').addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      items.forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+})();
+  </script>
+</body>
+</html>
